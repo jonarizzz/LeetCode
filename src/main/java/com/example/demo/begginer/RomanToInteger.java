@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class RomanToInteger {
 
-//    Runtime: 8 ms, faster than 64.08% of Java online submissions for Roman to Integer.
-//    Memory Usage: 45.1 MB, less than 69.78% of Java online submissions for Roman to Integer.
+//    Runtime: 4 ms, faster than 98.28% of Java online submissions for Roman to Integer.
+//    Memory Usage: 42.3 MB, less than 97.78% of Java online submissions for Roman to Integer.
 
 //    Symbol       Value
 //    I             1
