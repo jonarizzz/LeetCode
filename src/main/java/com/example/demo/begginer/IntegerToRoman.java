@@ -2,8 +2,7 @@ package com.example.demo.begginer;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class IntegerToRoman {
@@ -33,45 +32,30 @@ public class IntegerToRoman {
 //    C can be placed before D (500) and M (1000) to make 400 and 900.
 //    Given an integer, convert it to a roman numeral.
 
-    List<String> ones = new ArrayList<>();
-    List<String> fives = new ArrayList<>();
-
-
     public String intToRoman(int num) {
 
+        TreeMap<Integer, String> dict = new TreeMap<>();
+        dict.put(1, "I");
+        dict.put(4, "IV");
+        dict.put(5, "V");
+        dict.put(9, "IX");
+        dict.put(10, "X");
+        dict.put(40, "XL");
+        dict.put(50, "L");
+        dict.put(90, "XC");
+        dict.put(100, "C");
+        dict.put(400, "CD");
+        dict.put(500, "D");
+        dict.put(900, "CM");
+        dict.put(1000, "M");
+
         StringBuilder result = new StringBuilder();
-        String strNumber = Integer.toString(num);
 
-        ones.add(0, "I");
-        ones.add(1, "X");
-        ones.add(2, "C");
-        ones.add(3, "M");
-
-        fives.add(0, "V");
-        fives.add(1, "L");
-        fives.add(2, "D");
-
-        for (int i = strNumber.length(); i > 0; i--) {
-            result.insert(0, convertSingleNumber(strNumber.length() - i, strNumber.charAt(i-1)));
+        while (num > 0){
+            int key = dict.floorKey(num);
+            result.append(dict.get(key));
+            num -= key;
         }
-
         return result.toString();
-    }
-
-    private String convertSingleNumber(int digitNumber, char number){
-        return switch (number) {
-            case '0' -> "";
-            case '1' -> ones.get(digitNumber);
-            case '2' -> ones.get(digitNumber) + ones.get(digitNumber);
-            case '3' -> ones.get(digitNumber) + ones.get(digitNumber) + ones.get(digitNumber);
-            case '4' -> ones.get(digitNumber) + fives.get(digitNumber);
-            case '5' -> fives.get(digitNumber);
-            case '6' -> fives.get(digitNumber) + ones.get(digitNumber);
-            case '7' -> fives.get(digitNumber) + ones.get(digitNumber) + ones.get(digitNumber);
-            case '8' -> fives.get(digitNumber) + ones.get(digitNumber) + ones.get(digitNumber) + ones.get(digitNumber);
-            case '9' -> ones.get(digitNumber) + ones.get(digitNumber + 1);
-            default -> throw new IllegalArgumentException();
-        };
-
     }
 }
