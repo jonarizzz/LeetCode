@@ -1,6 +1,6 @@
-package com.example.demo.begginer;
+package leetcode.begginer;
 
-import org.junit.Assert;
+import leetcode.begginer.LongerCommonPrefix;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

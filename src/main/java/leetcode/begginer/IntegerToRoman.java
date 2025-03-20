@@ -1,4 +1,4 @@
-package com.example.demo.begginer;
+package leetcode.begginer;
 
 import org.springframework.stereotype.Service;
 
