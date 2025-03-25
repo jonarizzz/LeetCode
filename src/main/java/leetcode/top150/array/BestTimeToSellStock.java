@@ -2,6 +2,9 @@ package leetcode.top150.array;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class BestTimeToSellStock {
 
@@ -89,39 +92,15 @@ public class BestTimeToSellStock {
 
     public int maxProfitTwo(int[] prices) {
 
-        int totalProfit = 0;
-        int currentProfit = 0;
-        int max = prices[0];
-        int min = prices[0];
+        int profit = 0;
 
         for (int i = 1; i < prices.length; i++) {
-
-            // if min gets updated – profit (max) gets updated
-            if (prices[i] < min) {
-                totalProfit += currentProfit;
-                currentProfit = 0;
-                min = prices[i];
-                max = prices[i];
-                continue;
+            if (prices[i] > prices[i - 1]) {
+                profit += prices[i] - prices[i - 1];
             }
-
-            if (max < prices[i]) {
-                max = prices[i];
-                currentProfit = max - min;
-            }
-
-            if (prices[i] < max) {
-                totalProfit += currentProfit;
-                min = prices[i];
-                max = prices[i];
-                currentProfit = 0;
-            }
-
-
         }
-        totalProfit += currentProfit;
 
-        return totalProfit;
+        return profit;
     }
 
 }
